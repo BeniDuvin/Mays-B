@@ -158,7 +158,16 @@ const socials: SocialName[] = [
   "Instagram",
 ];
 
-const contactEmail = "Email a confirmer";
+const socialLinks: Record<SocialName, string> = {
+  TikTok: "https://www.tiktok.com/@maysbantsimba",
+  WhatsApp: "https://wa.me/242069607475",
+  Facebook: "https://www.facebook.com/gerald.bantsimba",
+  YouTube: "https://www.youtube.com/@maysbantsimba4275",
+  Instagram: "https://www.instagram.com/mays_bantsimba/",
+};
+
+const contactEmail = "maysbantsimba@gmail.com";
+const whatsappNumber = "+242 06 960 7475";
 
 function SocialIcon({ name }: { name: SocialName }) {
   const common = "h-5 w-5";
@@ -624,19 +633,37 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="font-display text-3xl text-[#fff6e8]">MAY&apos;S B</p>
-                  <p className="mt-2 text-sm text-[#f3c57b]">{contactEmail}</p>
+                  <div className="mt-2 flex flex-col gap-2 text-sm">
+                    <a
+                      href={`mailto:${contactEmail}`}
+                      className="text-[#f3c57b] transition hover:text-[#ffdca6]"
+                    >
+                      {contactEmail}
+                    </a>
+                    <a
+                      href={socialLinks.WhatsApp}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-[#c8d1da] transition hover:text-white"
+                    >
+                      {whatsappNumber}
+                    </a>
+                  </div>
                 </div>
               </div>
 
               <div className="flex flex-wrap gap-3">
                 {socials.map((social) => (
-                  <div
+                  <a
                     key={social}
+                    href={socialLinks[social]}
+                    target="_blank"
+                    rel="noreferrer"
                     className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/6 px-4 py-3 text-sm text-[#f5efe6] transition hover:border-[#f2bb66]/40 hover:bg-white/10"
                   >
                     <SocialIcon name={social} />
                     <span>{social}</span>
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>
